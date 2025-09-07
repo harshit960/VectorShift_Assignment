@@ -12,8 +12,8 @@ from integrations.integration_item import IntegrationItem
 
 from redis_client import add_key_value_redis, get_value_redis, delete_key_redis
 
-CLIENT_ID = 'XXX'
-CLIENT_SECRET = 'XXX'
+CLIENT_ID = '249d872b-594c-800e-bbb2-003759bc4138'
+CLIENT_SECRET = 'secret_XEhjUMUaEurNnzMV0wj0MGfY7WroD5TSozKrBwNGO2'
 encoded_client_id_secret = base64.b64encode(f'{CLIENT_ID}:{CLIENT_SECRET}'.encode()).decode()
 
 REDIRECT_URI = 'http://localhost:8000/integrations/notion/oauth2callback'
@@ -150,6 +150,7 @@ async def get_items_notion(credentials) -> list[IntegrationItem]:
         results = response.json()['results']
         list_of_integration_item_metadata = []
         for result in results:
+            print(result)
             list_of_integration_item_metadata.append(
                 create_integration_item_metadata_object(result)
             )
